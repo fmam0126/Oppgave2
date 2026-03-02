@@ -16,12 +16,14 @@ public class GoodMorning
     /// uses dictionary and finds the best greeting to return for the time of the day
     /// </summary>
     /// <param name="name">name to greet</param>
-    /// <returns>returns greeting + name</returns>
+    /// <returns>returns greeting + name + the date and time</returns>
     public static string Greeting(string name)
     {
         int currentTime = DateTime.Now.Hour;
-
+        
+        // LINQ magic
         int BestGreeting = _greeting.Keys.Where(hour => hour <= currentTime).Max();
-        return _greeting[BestGreeting] + $" {name}";
+        // return the greeting + name + Date and time
+        return _greeting[BestGreeting] + $" {name} the date and time is {DateTime.Now}";
     }
 }
